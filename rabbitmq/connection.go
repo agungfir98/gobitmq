@@ -13,6 +13,7 @@ var queueNames = []string{"email", "sms", "whatsapp"}
 
 type RabbitMq struct {
 	connection *amqp.Connection
+	channel    *amqp.Channel
 }
 
 func NewRabbitMq(url string) *RabbitMq {
@@ -31,6 +32,7 @@ func NewRabbitMq(url string) *RabbitMq {
 
 	rmq := &RabbitMq{
 		connection: conn,
+		channel:    ch,
 	}
 
 	return rmq

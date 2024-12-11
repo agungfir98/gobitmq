@@ -24,10 +24,7 @@ func NewApiService(listenAddr string) *ApiService {
 
 func (s *ApiService) Run() {
 	fmt.Printf("server running on  port: %v\n", s.listenAddr)
-	err := http.ListenAndServe(s.listenAddr, s.apiHandler.router)
-	if err != nil {
-		log.Fatal(err)
-	}
+	log.Fatal(http.ListenAndServe(s.listenAddr, s.apiHandler.router))
 }
 
 func (s *ApiService) Use(middleware func(*ApiHandler)) {
